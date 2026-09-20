@@ -1,6 +1,8 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
   flake.nixosModules.eblana-configuration = { pkgs, lib, ... }: {
     imports = [
+      #Import libraries
+      inputs.disko.nixosModules.disko
       #Import hardware config
       self.nixosModules.eblana-hardware
       self.nixosModules.eblana-disko
@@ -11,7 +13,6 @@
       self.nixosModules.audio
       self.nixosModules.console
       self.nixosModules.flatpak
-      self.nixosModules.grub
       self.nixosModules.networkmanager
       self.nixosModules.plymouth
       self.nixosModules.flatpak
@@ -30,8 +31,6 @@
       self.nixosModules.gnome
       self.nixosModules.niriwm
       self.nixosModules.gnome-keyring
-
-      self.nixosModules.users-callum
     ];
 
     #Enable flakes
@@ -41,7 +40,6 @@
     ];
 
     #Config
-    system.copySystemConfiguration = true;
     networking.hostname = "eblana";
     time.timezone = "Europe/London";
     i18n.defaultLocale = "en_GB.UTF-8";
@@ -66,13 +64,5 @@
     };
 
     system.stateVersion = "25.11";
-
-    services.tlp = {
-      enable = true;
-      settings = {
-        START_CHARGE_THRESH_BAT0 = 50;
-        STOP_CHARGE_THRESH_BAT0 = 90;
-      };
-    };
   };
 }

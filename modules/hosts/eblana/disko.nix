@@ -68,7 +68,7 @@
 
         sata1 = {
           type = "disk";
-          device = "dev/disk/by-id/ata-Seagate_BarraCuda_Q1_SSD_ZA480CV10001_7RV01JDJ";
+          device = "/dev/disk/by-id/ata-Seagate_BarraCuda_Q1_SSD_ZA480CV10001_7RV01JDJ";
           content = {
             type = "gpt";
             partitions = {

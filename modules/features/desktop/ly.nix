@@ -28,7 +28,7 @@
         hash = lib.fakeHash;
       };
       installPhase = ''
-        cp $src/animations/dur/blackhole-smooth-240x67.dur $out/blackhole-smooth-240x67.dur
+        install -D $src/animations/dur/blackhole-smooth-240x67.dur $out/blackhole-smooth-240x67.dur
       '';
     };
   };
